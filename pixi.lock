@@ -767,7 +767,9 @@ packages:
   name: cipher3
   version: 0.1.0
   path: .
-  sha256: dbcd820322c51b418893f8fa1e93e7860ec09e22566fd31176562d7f4cf6edbf
+  sha256: ad83f6c006461c0a376628443ef6981cceff7aaef5a399d33d2af1253f48c703
+  requires_dist:
+  - streamlit
   requires_python: '>=3.11'
   editable: true
 - kind: conda
