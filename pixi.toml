@@ -1,0 +1,12 @@
+[project]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "cipher3"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+streamlit = ">=1.39.0,<2"

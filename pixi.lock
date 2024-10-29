@@ -3,8 +3,6 @@ environments:
   default:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
-    indexes:
-    - https://pypi.org/simple
     packages:
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/altair-5.4.1-pyhd8ed1ab_1.conda
@@ -185,7 +183,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.20.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312h15fbf35_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.6-hb46c0d2_0.conda
-      - pypi: .
 packages:
 - kind: conda
   name: altair
@@ -763,15 +760,6 @@ packages:
   - pkg:pypi/charset-normalizer?source=hash-mapping
   size: 47314
   timestamp: 1728479405343
-- kind: pypi
-  name: cipher3
-  version: 0.1.0
-  path: .
-  sha256: ad83f6c006461c0a376628443ef6981cceff7aaef5a399d33d2af1253f48c703
-  requires_dist:
-  - streamlit
-  requires_python: '>=3.11'
-  editable: true
 - kind: conda
   name: click
   version: 8.1.7
@@ -2812,7 +2800,6 @@ packages:
   constrains:
   - python_abi 3.12.* *_cp312
   license: Python-2.0
-  purls: []
   size: 12975439
   timestamp: 1728057819519
 - kind: conda
@@ -3150,8 +3137,6 @@ packages:
   - watchdog >=2.1.5,<6
   license: Apache-2.0
   license_family: APACHE
-  purls:
-  - pkg:pypi/streamlit?source=hash-mapping
   size: 7138788
   timestamp: 1727818465060
 - kind: conda
