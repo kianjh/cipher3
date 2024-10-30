@@ -4,7 +4,7 @@ import pandas as pd
 def frequency_analyser(text: str):
     if not text:
         return pd.DataFrame()
-    text.upper()
+    text = text.upper()
     
     alphabet = [['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
                 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
