@@ -54,3 +54,21 @@ def brute_caesar_translator(in_text: str):          #Create a function to brute 
     df = pd.DataFrame(out_text).T           #Transform the 2d list into a dataframe
     df.columns = ["Key", "Result"]          #Label each column
     return df           #Return the dataframe
+
+def encrypt_affine(a: int, b:int, in_text: str):         #Create a function to encrypt, a for the coefficent, b for constant
+    in_text = in_text.upper()         #Ensuring all the text is uppercase
+    alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'J', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']         #Create a string of the alphabet
+
+    out_text = ""         #Create an empty output string
+
+    for char in in_text:          #Iterate over the string
+        if char in alphabet:            #Ensure that the character is not punctuation 
+
+            pos = alphabet.index(char)           #Find the position of the character
+            newPos = (a*pos+b) % 26         #Perform the Affine cypher on the position
+            out_text += alphabet[newPos]          #Convert back to a character and add to the output
+
+        else:
+            out_text += char          #Add punctuation to the output
+
+    return out_text           #Return the output
