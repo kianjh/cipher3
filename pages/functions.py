@@ -4,6 +4,7 @@ import streamlit as st
 
 def frequency_analyser(text: str):
     if not text:            #Catching out empty inputs
+
         return pd.DataFrame()
     
     text = text.upper()         #Ensuring all the text is uppercase
@@ -30,9 +31,9 @@ def caesar_translator(key: int, in_text: str):           #Create a function to t
     for char in in_text:          #Iterate over the list to decode each character individually 
         if char in alphabet:            #Ensure that the character is in the alphabet
 
-            Pos = alphabet.index(char) + key           #Determine the new Position of the character
-            Pos = Pos % 26          #Bring the index back within 26
-            out_text += alphabet[Pos]         #Add the character to the output
+            pos = alphabet.index(char) + key           #Determine the new position of the character
+            pos = pos % 26          #Bring the index back within 26
+            out_text += alphabet[pos]         #Add the character to the output
 
         else:
 
@@ -42,12 +43,14 @@ def caesar_translator(key: int, in_text: str):           #Create a function to t
 
 def brute_caesar_translator(in_text: str):          #Create a function to brute force a caesar cipher
     if not in_text:         #Catching out empty inputs
+
         return pd.DataFrame()
     
     in_text = in_text.upper()         #Ensuring all the text is uppercase
     out_text = [[],[]]          #Preparing a 2d list for the output
 
     for i in range(1, 26):          #Iterate over all possible keys
+
         out_text[0].append(i)           #Add the key to the list
         out_text[1].append(caesar_translator(i, in_text))           #Use the caesar translator function to work with the current key and add it to the list
 
@@ -56,19 +59,39 @@ def brute_caesar_translator(in_text: str):          #Create a function to brute 
     return df           #Return the dataframe
 
 def encrypt_affine(a: int, b:int, in_text: str):         #Create a function to encrypt, a for the coefficent, b for constant
-    in_text = in_text.upper()         #Ensuring all the text is uppercase
+    if isinstance(in_text, str):
+        in_text = in_text.upper()         #Ensuring all the text is uppercase
     alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'J', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']         #Create a string of the alphabet
-
     out_text = ""         #Create an empty output string
 
     for char in in_text:          #Iterate over the string
         if char in alphabet:            #Ensure that the character is not punctuation 
 
             pos = alphabet.index(char)           #Find the position of the character
-            newPos = (a*pos+b) % 26         #Perform the Affine cypher on the position
-            out_text += alphabet[newPos]          #Convert back to a character and add to the output
+            pos = (a*pos+b) % 26         #Perform the Affine cypher on the position
+            out_text += alphabet[pos]          #Convert back to a character and add to the output
 
         else:
+
             out_text += char          #Add punctuation to the output
+
+    return out_text           #Return the output
+
+def decrypt_affine(a: int, b: int, in_text: str):             #Create a function to encrypt, a for the coefficent, b for constant
+
+    in_text = in_text.upper()           #Ensuring all the text is uppercase
+    alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'J', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']         #Create a string of the alphabet
+    out_text = ""         #Create an empty output string
+    encrypted_alph = encrypt_affine(a,b,alphabet)          #Create the encrypted alphabet
+
+    for char in in_text:          #Iterate over the string
+        if char in alphabet:            #Ensure that the character is not punctuation
+
+            pos = encrypted_alph.find(char)          #Find the position of the char in the encrypted alphabet
+            out_text += alphabet[pos]         #Use the position found to determine the new character to add to the output
+
+        else:
+
+            out_text += char          #Add the punctuation to the output
 
     return out_text           #Return the output
