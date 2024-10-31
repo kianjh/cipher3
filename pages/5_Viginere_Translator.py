@@ -1,7 +1,7 @@
 import streamlit as st
 from pages.functions import encrypt_viginere, decrypt_viginere
 
-st.title("Affine Translator")
+st.title("Viginere Translator")
 st.header("Encrypter", divider=True)
 
 encrypt_key = st.text_input("Enter the key:", key="Encrypt Key")
