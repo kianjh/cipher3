@@ -6,8 +6,6 @@ st.title("Frequency Analyser")
 txt = st.text_area("Enter text to analyze here")
 
 result = frequency_analyser(txt)
-if len(result):
-    st.dataframe(
-        result,
-        hide_index=True,
-    )
+run = st.button("Run")
+if len(result) and run:
+    st.dataframe(result, hide_index=True)
