@@ -1,5 +1,5 @@
 import streamlit as st
-st.title("Cypher Challenge Resource")
+st.title("Cipher Challenge Resource")
 st.header("Overview of the Project", divider=True)
 st.write("""
         This is a resource I have devolped for my team in the National Cipher Challenge.\n
